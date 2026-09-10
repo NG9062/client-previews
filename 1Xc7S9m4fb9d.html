@@ -97,15 +97,16 @@ tr:last-child td{border-bottom:0}.tw{overflow-x:auto;border-radius:4px}
 .play{background:var(--black);color:var(--ivory);border-radius:4px;padding:34px 30px 26px;position:relative;overflow:hidden}
 .band.ivory .play .eyebrow{margin-bottom:10px;color:var(--sky)}.play h2{color:var(--ivory)}.band.ivory .play p.lead{color:#c9cabb;font-size:17px;max-width:60ch;margin:8px 0 22px}.band.ivory .play p.note{color:#a9aa9c}
 .tees{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 16px}.tees button{background:transparent;border:1px solid rgba(245,245,230,.4);color:var(--ivory);padding:0 16px;height:40px;border-radius:25px;font:500 14px/1 var(--body);cursor:pointer}.tees button[aria-pressed=true]{background:var(--yellow);color:var(--olive);border-color:var(--yellow)}
-.hole{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:22px;align-items:start}
-.hole svg{width:100%;height:auto;display:block}
+.hole{display:grid;grid-template-columns:minmax(240px,400px) 1fr;gap:34px;align-items:start}
+.hole svg,.hole .art canvas{width:100%;height:auto;display:block;border-radius:4px}
+.hole .meta{padding-top:6px}
 .hole .meta .num{font:500 14px/1 var(--body);color:var(--sky)}
 .hole .meta .big{display:flex;gap:30px;flex-wrap:wrap;margin:10px 0 12px}.hole .big b{display:block;font-family:var(--display);font-weight:300;font-size:56px;line-height:1;font-variant-numeric:tabular-nums}.hole .big span{font:500 13px/1 var(--body);color:#c9cabb;display:block;margin-top:6px}
 .hole .desc{color:#e0e1d3;margin:0 0 12px;max-width:52ch}
 .hole .photo{border-radius:4px;overflow:hidden;margin:0 0 12px;max-width:460px;aspect-ratio:auto}.hole .photo img{width:100%;height:auto}
 .score{display:flex;align-items:center;gap:10px;margin-top:6px;flex-wrap:wrap}.score button{width:46px;height:46px;border-radius:999px;border:1px solid rgba(245,245,230,.4);background:transparent;color:var(--ivory);font-size:22px;cursor:pointer}
 .score .n{min-width:44px;text-align:center;font-size:26px;font-weight:600;font-variant-numeric:tabular-nums}.score .vs{color:#c9cabb;font-size:14px}
-.nav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:20px}.nav button{height:44px;padding:0 20px;border-radius:25px;border:0;background:var(--yellow);color:var(--olive);font:500 15px/1 var(--body);cursor:pointer}.nav button:disabled{opacity:.4;cursor:default}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:28px;flex-wrap:wrap}.nav button{height:44px;padding:0 20px;border-radius:25px;border:0;background:var(--yellow);color:var(--olive);font:500 15px/1 var(--body);cursor:pointer}.nav button:disabled{opacity:.4;cursor:default}
 .nav .vs{color:#c9cabb;font-size:14px}
 .board{margin-top:16px}.board .row{display:flex;gap:6px;align-items:center;margin-top:8px}.board .row .lab{width:44px;font-size:12.5px;color:#c9cabb}.board .row .tot{font-size:12.5px;color:#c9cabb;margin-left:6px;white-space:nowrap}
 .pip{flex:1;min-width:0;height:34px;border-radius:4px;border:1px solid rgba(245,245,230,.25);background:transparent;color:var(--ivory);font-size:12.5px;cursor:pointer;padding:0}.pip.on{background:var(--yellow);color:var(--olive);border-color:var(--yellow)}.pip.done{border-color:rgba(245,245,230,.7)}
@@ -173,7 +174,7 @@ footer.sky .col p{margin:0 0 16px}
 .staff{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}.staff div{border-top:1px solid var(--line);padding-top:12px}.staff b{display:block;font-family:var(--display);font-weight:400;font-size:26px}.staff span{display:block;color:var(--mute);font-size:15px}
 .kv{list-style:none;margin:0;padding:0}.kv li{display:grid;grid-template-columns:150px 1fr;gap:14px;padding:12px 0;border-top:1px solid var(--line);font-size:17px}.kv li:last-child{border-bottom:1px solid var(--line)}.kv li span:first-child{color:var(--mute);font-size:14px;padding-top:3px}
 .band.sky .kv li{border-color:rgba(0,0,0,.18)}
-@media (max-width:760px){.bk .ctl{grid-template-columns:1fr}.vendors li,.kv li{grid-template-columns:1fr;gap:4px}.form{grid-template-columns:1fr}.phero{height:46vh}}
+@media (max-width:760px){.hole{grid-template-columns:1fr}.hole .art{max-width:320px;margin:0 auto}.bk .ctl{grid-template-columns:1fr}.vendors li,.kv li{grid-template-columns:1fr;gap:4px}.form{grid-template-columns:1fr}.phero{height:46vh}}
 </style>
 </head>
 <body>
@@ -196,9 +197,11 @@ footer.sky .col p{margin:0 0 16px}
 
 
 
+
+
 <div class="menu" id="menu" role="dialog" aria-label="Menu">
   <div class="bar"><b>Mount Pleasant Golf Club</b><button type="button" class="x" aria-label="Close menu" data-menu-close>&times;</button></div>
-  <nav><a href="#/home" data-nav="home">Home</a><a href="#/course" data-nav="course">The Course</a><a href="#/teetimes" data-nav="teetimes">Tee Times</a><a href="#/club" data-nav="club">The Club</a><a href="#/proshop" data-nav="proshop">Pro Shop</a><a href="#/contact" data-nav="contact">Contact</a></nav>
+  <nav><a href="#/home" data-nav="home">Home</a><a href="#/course" data-nav="course">The Course</a><a href="#/membership" data-nav="membership">Membership</a><a href="#/teetimes" data-nav="teetimes">Member Tee Times</a><a href="#/club" data-nav="club">The Club</a><a href="#/proshop" data-nav="proshop">Pro Shop</a><a href="#/contact" data-nav="contact">Contact</a></nav>
   <div class="foot">141 Staples St, Lowell, MA 01851 · (978) 452-8228</div>
 </div>
 
@@ -209,8 +212,9 @@ footer.sky .col p{margin:0 0 16px}
   <div class="topbar">
     <div class="left"><button type="button" class="hamb" aria-label="Menu" data-menu><span></span><span></span><span></span></button><a class="brand" href="#/home">Mount Pleasant Golf Club</a></div>
     <div class="pills">
-      <a class="pill" href="#/teetimes">Call or Book Online</a>
-      <a class="pill" href="#/proshop">Pro Shop</a>
+      <a class="pill" href="#/membership">Become a Member</a>
+      <a class="pill" href="https://mpgc.net/login/" target="_blank" rel="noopener">Member Login</a>
+      
       <a class="pill" href="#/club/functions">Book an Event</a>
       <a class="pill" href="#/contact">Contact Us</a>
     </div>
@@ -224,7 +228,7 @@ footer.sky .col p{margin:0 0 16px}
 </header>
 <main>
 <section class="band olive"><div class="in">
-  <p class="welcome">Welcome to Mount Pleasant Golf Club, nine holes in Lowell, Massachusetts, established in 1910. Tucked away in a moderately dense residential area in the Highlands section of Lowell. Founded by neighbors to promote social interaction, exercise, tennis, golf and athletic sports. On site: function hall, members lounge, pro shop, dance floor (25x50 ft), buffet area (30x20 ft).</p>
+  <p class="welcome">Welcome to Mount Pleasant Golf Club, a private nine-hole club in Lowell, Massachusetts, established in 1910. Tucked away in a moderately dense residential area in the Highlands section of Lowell. Founded by neighbors to promote social interaction, exercise, tennis, golf and athletic sports. On site: function hall, members lounge, pro shop, dance floor (25x50 ft), buffet area (30x20 ft).</p>
 </div></section>
 
 <section class="band black"><div class="in">
@@ -237,12 +241,14 @@ footer.sky .col p{margin:0 0 16px}
 
 <section class="band black" style="padding-top:0"><div class="in">
   <div class="two">
+    
     <div>
-      <p class="eyebrow">Tee times.</p>
-      <h2 class="giant yellow" style="font-size:clamp(52px,7.5vw,110px)">Book from your phone.</h2>
-      <p style="margin-top:26px">Today a golfer calls the pro shop. The new site books tee times online through Lightspeed Golf, the tee-sheet system used by thousands of courses, with the phone line kept exactly as it is.</p>
-      <a class="pill" href="#/teetimes">Call or Book Online</a>
+      <p class="eyebrow">Membership.</p>
+      <h2 class="giant yellow" style="font-size:clamp(52px,7.5vw,110px)">Become a member today.</h2>
+      <p style="margin-top:26px">Regular A Membership: 275 members, no playing restrictions, only votes in club matters. Ask about joining, or apply, right from this page.</p>
+      <a class="pill" href="#/membership">Become a Member</a>
     </div>
+    
     <figure class="photo"><img data-g="0" alt="Placeholder photo by Benny Hassum (Pexels)"></figure>
   </div>
 </div></section>
@@ -288,8 +294,9 @@ footer.sky .col p{margin:0 0 16px}
   <div class="topbar">
     <div class="left"><button type="button" class="hamb" aria-label="Menu" data-menu><span></span><span></span><span></span></button><a class="brand" href="#/home">Mount Pleasant Golf Club</a></div>
     <div class="pills">
-      <a class="pill" href="#/teetimes">Call or Book Online</a>
-      <a class="pill" href="#/proshop">Pro Shop</a>
+      <a class="pill" href="#/membership">Become a Member</a>
+      <a class="pill" href="https://mpgc.net/login/" target="_blank" rel="noopener">Member Login</a>
+      
       <a class="pill" href="#/club/functions">Book an Event</a>
       <a class="pill" href="#/contact">Contact Us</a>
     </div>
@@ -412,12 +419,14 @@ window.COURSETOUR={state:function(){return {progress:progress(),cur:cur,st:state
         <div class="big"><div><b id="hpar"></b><span>par</span></div><div><b id="hyds"></b><span>yards</span></div><div id="hhd" hidden><b id="hhdv"></b><span id="hhdl">handicap</span></div></div>
         <div class="photo" id="hphoto" hidden><img alt=""></div>
         <p class="desc" id="hdesc" hidden></p>
+        <p class="desc">Tee at the bottom, green at the top, as mapped on OpenStreetMap over the USGS aerial. Tap + after each hole to keep your score.</p>
+        <div class="num" style="margin-top:18px">Your score</div>
         <div class="score" aria-label="Your score on this hole"><button type="button" id="minus" aria-label="One stroke fewer">−</button><span class="n" id="strokes">–</span><button type="button" id="plus" aria-label="One stroke more">+</button><span class="vs" id="vs"></span></div>
+        <div class="nav"><button type="button" id="prev">← Previous</button><div class="vs" id="tot"></div><button type="button" id="next">Next hole →</button></div>
       </div>
     </div>
-    <div class="nav"><button type="button" id="prev">← Previous</button><div class="vs" id="tot"></div><button type="button" id="next">Next hole →</button></div>
     <div class="board" id="board"></div>
-    <p class="note">Hole diagrams are schematic and not the real hole shapes; the mapped routing is in the cards above.</p>
+    <p class="note">Hole shapes from OpenStreetMap over the public-domain USGS aerial; tee at the bottom, green at the top.</p>
   </div>
   <div class="tw card-table"><table><thead><tr><th>Hole</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th></tr></thead><tbody>
     <tr><td>Par</td><td>4</td><td>4</td><td>4</td><td>5</td><td>4</td><td>3</td><td>3</td><td>5</td><td>4</td></tr>
@@ -432,6 +441,64 @@ window.COURSETOUR={state:function(){return {progress:progress(),cur:cur,st:state
 </main>
 </section>
 
+
+<!-- ============ MEMBERSHIP ============ -->
+<section class="page" data-page="membership">
+
+<div class="phero" data-bg="0">
+  <div class="topbar">
+    <div class="left"><button type="button" class="hamb" aria-label="Menu" data-menu><span></span><span></span><span></span></button><a class="brand" href="#/home">Mount Pleasant Golf Club</a></div>
+    <div class="pills">
+      <a class="pill" href="#/membership">Become a Member</a>
+      <a class="pill" href="https://mpgc.net/login/" target="_blank" rel="noopener">Member Login</a>
+      
+      <a class="pill" href="#/club/functions">Book an Event</a>
+      <a class="pill" href="#/contact">Contact Us</a>
+    </div>
+  </div>
+<div class="ttl"><h1>Membership</h1><p>Become a member today</p></div></div>
+
+<main>
+<section class="band black"><div class="in">
+  <div class="niche">
+    <div><p class="eyebrow">Join.</p><h2 class="giant yellow" style="font-size:clamp(52px,8vw,120px)">Become a member today.</h2></div>
+    <div><p class="def">Regular A Membership: 275 members, no playing restrictions, only votes in club matters.</p>
+      <p style="display:flex;gap:10px;flex-wrap:wrap"><a class="pill" href="#/membership/apply">Apply today</a><a class="pill ghost" href="#/contact">Ask a question</a></p></div>
+  </div>
+</div></section>
+<section class="band ivory"><div class="in">
+  
+  <div class="row two" id="types">
+    <div><h2 class="thin">Membership types</h2><ul class="list"><li>Regular A Membership: 275 members, no playing restrictions, only votes in club matters</li><li>Limited B Membership: 50 members, playing restrictions during league play, tournaments, weekend mornings</li><li>Junior &amp; Youth Membership totals 50 members; Junior Members (18-24) have no playing restrictions but no vote</li><li>Family Membership includes kids under 18 and a spouse</li><li>Student discounts available for Juniors in school</li></ul></div>
+    <figure class="photo"><img data-g="1" alt="Placeholder photo by Elly Son (Pexels)"></figure>
+  </div>
+  
+  
+  <div class="row two" id="apply">
+    <div>
+      <h2 class="thin">Apply</h2>
+      <p>Today the application is a PDF to print. On the new site a future member fills it in from a phone and it lands in the club's inbox; the current form stays available too.</p>
+      <p><a class="pill olive" href="https://mpgc.net/wp-content/uploads/2025/11/mtpleasantmemberapp2026.pdf" target="_blank" rel="noopener">Download the current application (PDF)</a></p>
+      <p>Questions: <a href="tel:9784528228">(978) 452-8228</a> · <a href="mailto:4jenks@verizon.net">4jenks@verizon.net</a></p>
+    </div>
+    <div>
+      <p style="font-size:15px"><span class="tag">Concept — on the live site this reaches the club's inbox</span></p>
+      <form class="form" onsubmit="return false">
+        <label>First name<input type="text" placeholder="First name"></label>
+        <label>Last name<input type="text" placeholder="Last name"></label>
+        <label>Email<input type="email" placeholder="you@example.com"></label>
+        <label>Phone<input type="tel" placeholder="(978) 000-0000"></label>
+        <label class="full">Membership type<select><option>Regular A Membership</option><option>Limited B Membership</option><option>Junior &amp; Youth Membership</option><option>Family Membership</option><option>Student discounts available for Juniors in school</option><option>Not sure yet</option></select></label>
+        <textarea placeholder="Anything we should know? A member who can sponsor you, when you'd like to start."></textarea>
+        <div class="full"><button type="button" class="pill" disabled style="opacity:.7">Send application (concept)</button></div>
+      </form>
+    </div>
+  </div>
+</div></section>
+</main>
+</section>
+
+
 <!-- ============ TEE TIMES ============ -->
 <section class="page" data-page="teetimes">
 
@@ -439,13 +506,14 @@ window.COURSETOUR={state:function(){return {progress:progress(),cur:cur,st:state
   <div class="topbar">
     <div class="left"><button type="button" class="hamb" aria-label="Menu" data-menu><span></span><span></span><span></span></button><a class="brand" href="#/home">Mount Pleasant Golf Club</a></div>
     <div class="pills">
-      <a class="pill" href="#/teetimes">Call or Book Online</a>
-      <a class="pill" href="#/proshop">Pro Shop</a>
+      <a class="pill" href="#/membership">Become a Member</a>
+      <a class="pill" href="https://mpgc.net/login/" target="_blank" rel="noopener">Member Login</a>
+      
       <a class="pill" href="#/club/functions">Book an Event</a>
       <a class="pill" href="#/contact">Contact Us</a>
     </div>
   </div>
-<div class="ttl"><h1>Tee Times</h1><p>Members and guests</p></div></div>
+<div class="ttl"><h1>Member Tee Times</h1><p>Members and their guests</p></div></div>
 
 <main>
 <section class="band black"><div class="in">
@@ -453,12 +521,13 @@ window.COURSETOUR={state:function(){return {progress:progress(),cur:cur,st:state
     <div>
       <p class="eyebrow">Book online.</p>
       <h2 class="giant yellow" style="font-size:clamp(52px,7.5vw,110px)">Book from your phone.</h2>
-      <p style="margin-top:26px">This is the Lightspeed Golf booking widget as it would sit on your site: date, players, holes, then a tap to book. Members and guests see the times the pro shop opens to them; the tee sheet, payments and the phone line all stay with the pro shop.</p>
-      <a class="pill" href="tel:9784532949">Call the pro shop 978-453-2949</a>
+      <p style="margin-top:26px">Members already book through the members area; the new site puts that login on every page. The widget beside is what a member tee sheet looks like when it lives on the site itself — the same booking, without leaving the page. Guests play with a member.</p>
+      <p style="display:flex;gap:10px;flex-wrap:wrap"><a class="pill" href="https://mpgc.net/login/" target="_blank" rel="noopener">Member Login</a><a class="pill ghost" href="tel:9784532949">Pro shop 978-453-2949</a></p>
+      
     </div>
     
     <div class="bk" id="bk">
-      <div class="hd"><b>Mount Pleasant Golf Club · Tee times</b><span class="by">Concept widget · <strong>Lightspeed Golf</strong> — example times, not live availability</span></div>
+      <div class="hd"><b>Mount Pleasant Golf Club · Member tee times</b><span class="by">Concept widget · <strong>Lightspeed Golf</strong> — example times, not live availability</span></div>
       <div class="ctl">
         <div class="days" id="bk-days"></div>
         <div class="seg" id="bk-players"><span class="lab">Players</span><button type="button" aria-pressed="false">1</button><button type="button" aria-pressed="true">2</button><button type="button" aria-pressed="false">3</button><button type="button" aria-pressed="false">4</button></div>
@@ -480,14 +549,13 @@ window.COURSETOUR={state:function(){return {progress:progress(),cur:cur,st:state
   </div>
   <h2 class="thin" style="margin-top:64px">Booking systems we connect</h2>
   <ul class="vendors">
+    <li><b>the members area</b><p>Already in place. The new site links to the same login, so nothing changes for members on day one.</p></li>
     <li><b>Lightspeed Golf</b><p>Our recommendation for a member club: online tee sheet, member and guest rules, point-of-sale for the pro shop, no obligation to give away tee times.</p></li>
     <li><b>foreUP</b><p>Widely used tee-sheet and booking system with a strong mobile booking flow.</p></li>
     <li><b>Teesnap</b><p>Tee sheet, booking and pro-shop point-of-sale in one iPad-based system.</p></li>
   </ul>
 </div></section>
 
-
-<section class="band ivory" style="padding-top:0"><div class="in"><h2 class="thin">Playing times</h2><p>Events must end by 10:00pm Sunday, 11:00pm Monday-Saturday</p></div></section>
 
 </main>
 </section>
@@ -499,8 +567,9 @@ window.COURSETOUR={state:function(){return {progress:progress(),cur:cur,st:state
   <div class="topbar">
     <div class="left"><button type="button" class="hamb" aria-label="Menu" data-menu><span></span><span></span><span></span></button><a class="brand" href="#/home">Mount Pleasant Golf Club</a></div>
     <div class="pills">
-      <a class="pill" href="#/teetimes">Call or Book Online</a>
-      <a class="pill" href="#/proshop">Pro Shop</a>
+      <a class="pill" href="#/membership">Become a Member</a>
+      <a class="pill" href="https://mpgc.net/login/" target="_blank" rel="noopener">Member Login</a>
+      
       <a class="pill" href="#/club/functions">Book an Event</a>
       <a class="pill" href="#/contact">Contact Us</a>
     </div>
@@ -575,8 +644,9 @@ window.COURSETOUR={state:function(){return {progress:progress(),cur:cur,st:state
   <div class="topbar">
     <div class="left"><button type="button" class="hamb" aria-label="Menu" data-menu><span></span><span></span><span></span></button><a class="brand" href="#/home">Mount Pleasant Golf Club</a></div>
     <div class="pills">
-      <a class="pill" href="#/teetimes">Call or Book Online</a>
-      <a class="pill" href="#/proshop">Pro Shop</a>
+      <a class="pill" href="#/membership">Become a Member</a>
+      <a class="pill" href="https://mpgc.net/login/" target="_blank" rel="noopener">Member Login</a>
+      
       <a class="pill" href="#/club/functions">Book an Event</a>
       <a class="pill" href="#/contact">Contact Us</a>
     </div>
@@ -614,8 +684,9 @@ window.COURSETOUR={state:function(){return {progress:progress(),cur:cur,st:state
   <div class="topbar">
     <div class="left"><button type="button" class="hamb" aria-label="Menu" data-menu><span></span><span></span><span></span></button><a class="brand" href="#/home">Mount Pleasant Golf Club</a></div>
     <div class="pills">
-      <a class="pill" href="#/teetimes">Call or Book Online</a>
-      <a class="pill" href="#/proshop">Pro Shop</a>
+      <a class="pill" href="#/membership">Become a Member</a>
+      <a class="pill" href="https://mpgc.net/login/" target="_blank" rel="noopener">Member Login</a>
+      
       <a class="pill" href="#/club/functions">Book an Event</a>
       <a class="pill" href="#/contact">Contact Us</a>
     </div>
@@ -632,8 +703,8 @@ window.COURSETOUR={state:function(){return {progress:progress(),cur:cur,st:state
         <li><span>Clubhouse</span><span><a href="tel:(978) 452-8228">(978) 452-8228</a></span></li>
         <li><span>Pro shop</span><span><a href="tel:9784532949">978-453-2949</a></span></li>
         <li><span>Function hall</span><span><a href="tel:978-452-8228">978-452-8228</a></span></li>
+        <li><span>Email</span><span><a href="mailto:4jenks@verizon.net">4jenks@verizon.net</a></span></li>
         
-        <li><span>Pro shop email</span><span><a href="mailto:4jenks@verizon.net">4jenks@verizon.net</a></span></li>
         
         <li><span>Hours</span><span>Events must end by 10:00pm Sunday, 11:00pm Monday-Saturday</span></li>
         
@@ -649,7 +720,7 @@ window.COURSETOUR={state:function(){return {progress:progress(),cur:cur,st:state
         <label>Last name<input type="text" placeholder="Last name"></label>
         <label>Email<input type="email" placeholder="you@example.com"></label>
         <label>Phone<input type="tel" placeholder="(978) 000-0000"></label>
-        <label class="full">About<select><option>A tee time</option><option>Membership</option><option>An outing or tournament</option><option>A function or event</option><option>Something else</option></select></label>
+        <label class="full">About<select><option>Membership</option><option>A tee time (members)</option><option>An outing or tournament</option><option>A function or event</option><option>Something else</option></select></label>
         <textarea placeholder="How can we help?"></textarea>
         <div class="full"><button type="button" class="pill" disabled style="opacity:.7">Send (concept)</button></div>
       </form>
@@ -664,26 +735,26 @@ window.COURSETOUR={state:function(){return {progress:progress(),cur:cur,st:state
     <p class="mark">Mount Pleasant Golf Club</p>
     <p>141 Staples St, Lowell, MA 01851</p>
     <p>Telephone: <a href="tel:9784528228">(978) 452-8228</a></p>
-    
+    <p><a href="mailto:4jenks@verizon.net">4jenks@verizon.net</a></p>
     <p style="margin-top:18px"><a class="pill olive" href="https://www.google.com/maps/search/?api=1&query=Mount%20Pleasant%20Golf%20Club%20141%20Staples%20St%2C%20Lowell%2C%20MA%2001851" target="_blank" rel="noopener">Directions</a></p>
   </div>
-  <div class="links"><a href="#/home">Home</a><a href="#/course">The Course</a><a href="#/teetimes">Tee Times</a><a href="#/club">The Club</a><a href="#/proshop">Pro Shop</a><a href="#/contact">Contact</a><a href="https://www.instagram.com/mtpleasantgc/" target="_blank" rel="noopener">Instagram</a></div>
+  <div class="links"><a href="#/home">Home</a><a href="#/course">The Course</a><a href="#/membership">Membership</a><a href="#/teetimes">Member Tee Times</a><a href="#/club">The Club</a><a href="#/proshop">Pro Shop</a><a href="#/contact">Contact</a><a href="https://www.instagram.com/mtpleasantgc/" target="_blank" rel="noopener">Instagram</a></div>
   <div class="col">
     <h3>Hours</h3><p>Events must end by 10:00pm Sunday, 11:00pm Monday-Saturday</p>
     
     <h3>Tee times</h3>
-    <p>Pro shop <a href="tel:9784532949">978-453-2949</a><br>Online booking through Lightspeed Golf on the live site.</p>
+    <p>Members: <a href="https://mpgc.net/login/" target="_blank" rel="noopener">member login</a> · pro shop <a href="tel:9784532949">978-453-2949</a><br>Guests play with a member.</p><h3>Join</h3><p><a href="#/membership">Become a member today</a></p>
   </div>
 </div></footer>
 <div class="copy">
   <div>Concept preview for Mount Pleasant Golf Club · prepared by Nick Grzejka, Windham, NH · September 10, 2026</div>
   <details class="src"><summary>Where every fact and photo on this page came from</summary>
-    <ul><li><a href="https://mpgc.net/" target="_blank" rel="noopener">https://mpgc.net/</a></li><li><a href="https://mpgc.net/guests/contact-us/" target="_blank" rel="noopener">https://mpgc.net/guests/contact-us/</a></li><li><a href="https://mpgc.net/guests/events-functions/event-pricing/" target="_blank" rel="noopener">https://mpgc.net/guests/events-functions/event-pricing/</a></li><li><a href="https://mpgc.net/guests/events-functions/function-hall/" target="_blank" rel="noopener">https://mpgc.net/guests/events-functions/function-hall/</a></li><li><a href="https://mpgc.net/guests/membership-info/" target="_blank" rel="noopener">https://mpgc.net/guests/membership-info/</a></li><li><a href="https://mpgc.net/history/" target="_blank" rel="noopener">https://mpgc.net/history/</a></li><li><a href="https://mpgc.net/pro-shop-staff/" target="_blank" rel="noopener">https://mpgc.net/pro-shop-staff/</a></li><li><a href="https://www.instagram.com/mtpleasantgc/" target="_blank" rel="noopener">https://www.instagram.com/mtpleasantgc/</a></li><li><a href="https://www.openstreetmap.org/" target="_blank" rel="noopener">https://www.openstreetmap.org/</a></li><li><a href="https://www.openstreetmap.org/way/1259778001" target="_blank" rel="noopener">https://www.openstreetmap.org/way/1259778001</a></li><li><a href="https://www.openstreetmap.org/way/1259778002" target="_blank" rel="noopener">https://www.openstreetmap.org/way/1259778002</a></li><li><a href="https://www.openstreetmap.org/way/1259778003" target="_blank" rel="noopener">https://www.openstreetmap.org/way/1259778003</a></li><li><a href="https://www.openstreetmap.org/way/1259778005" target="_blank" rel="noopener">https://www.openstreetmap.org/way/1259778005</a></li><li><a href="https://www.openstreetmap.org/way/1259778006" target="_blank" rel="noopener">https://www.openstreetmap.org/way/1259778006</a></li><li><a href="https://www.openstreetmap.org/way/1259778007" target="_blank" rel="noopener">https://www.openstreetmap.org/way/1259778007</a></li><li><a href="https://www.openstreetmap.org/way/1259778008" target="_blank" rel="noopener">https://www.openstreetmap.org/way/1259778008</a></li><li><a href="https://www.openstreetmap.org/way/1259778009" target="_blank" rel="noopener">https://www.openstreetmap.org/way/1259778009</a></li><li><a href="https://www.openstreetmap.org/way/1259778010" target="_blank" rel="noopener">https://www.openstreetmap.org/way/1259778010</a></li></ul>
+    <ul><li><a href="https://mpgc.net/" target="_blank" rel="noopener">https://mpgc.net/</a></li><li><a href="https://mpgc.net/guests/contact-us/" target="_blank" rel="noopener">https://mpgc.net/guests/contact-us/</a></li><li><a href="https://mpgc.net/guests/events-functions/event-pricing/" target="_blank" rel="noopener">https://mpgc.net/guests/events-functions/event-pricing/</a></li><li><a href="https://mpgc.net/guests/events-functions/function-hall/" target="_blank" rel="noopener">https://mpgc.net/guests/events-functions/function-hall/</a></li><li><a href="https://mpgc.net/guests/membership-info/" target="_blank" rel="noopener">https://mpgc.net/guests/membership-info/</a></li><li><a href="https://mpgc.net/history/" target="_blank" rel="noopener">https://mpgc.net/history/</a></li><li><a href="https://mpgc.net/membership/" target="_blank" rel="noopener">https://mpgc.net/membership/</a></li><li><a href="https://mpgc.net/pro-shop-staff/" target="_blank" rel="noopener">https://mpgc.net/pro-shop-staff/</a></li><li><a href="https://www.instagram.com/mtpleasantgc/" target="_blank" rel="noopener">https://www.instagram.com/mtpleasantgc/</a></li><li><a href="https://www.openstreetmap.org/" target="_blank" rel="noopener">https://www.openstreetmap.org/</a></li><li><a href="https://www.openstreetmap.org/way/1259778001" target="_blank" rel="noopener">https://www.openstreetmap.org/way/1259778001</a></li><li><a href="https://www.openstreetmap.org/way/1259778002" target="_blank" rel="noopener">https://www.openstreetmap.org/way/1259778002</a></li><li><a href="https://www.openstreetmap.org/way/1259778003" target="_blank" rel="noopener">https://www.openstreetmap.org/way/1259778003</a></li><li><a href="https://www.openstreetmap.org/way/1259778005" target="_blank" rel="noopener">https://www.openstreetmap.org/way/1259778005</a></li><li><a href="https://www.openstreetmap.org/way/1259778006" target="_blank" rel="noopener">https://www.openstreetmap.org/way/1259778006</a></li><li><a href="https://www.openstreetmap.org/way/1259778007" target="_blank" rel="noopener">https://www.openstreetmap.org/way/1259778007</a></li><li><a href="https://www.openstreetmap.org/way/1259778008" target="_blank" rel="noopener">https://www.openstreetmap.org/way/1259778008</a></li><li><a href="https://www.openstreetmap.org/way/1259778009" target="_blank" rel="noopener">https://www.openstreetmap.org/way/1259778009</a></li><li><a href="https://www.openstreetmap.org/way/1259778010" target="_blank" rel="noopener">https://www.openstreetmap.org/way/1259778010</a></li></ul>
     <p>Photos: licensed stock placeholders (Pexels); swapped for your own photos on the live site. Lightspeed Golf, foreUP and Teesnap are named as booking systems the live site can connect to; the booking widget shown is a concept, not their software. Nothing on this page has been invented; sections your site does not cover were left out rather than filled in.</p>
   </details>
 </div>
 
-<div class="stick"><a class="pill" href="#/teetimes">Call or Book Online</a></div>
+<div class="stick"><a class="pill" href="#/membership">Become a Member</a></div>
 
 <div class="lb" id="lb" role="dialog" aria-label="Photo"><button class="x" aria-label="Close">&times;</button><img alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><div class="cap"></div></div>
 
@@ -717,24 +788,26 @@ if(days){var names=['Thu','Fri','Sat','Sun','Mon','Tue','Wed'],nums=[12,13,14,15
 
 <script>
 (function(){
-// Hole cards: each hole's real routing over the aerial, rotated so the tee sits at the bottom.
-var cards=document.querySelectorAll('#holes canvas');if(!cards.length)return;
-function draw(){var T=window.COURSETOUR;if(!T||!T.ready||!T.data||!T.img){return setTimeout(draw,120)}
- var D=T.data,img=T.img;
- cards.forEach(function(cv){var n=+cv.dataset.n,h=D.holes.filter(function(x){return x.n===n})[0];if(!h)return;
-  var W=cv.width,H=cv.height,c=cv.getContext('2d'),L=h.line,a=L[0],b=L[L.length-1];
-  var ang=Math.atan2(b[1]-a[1],b[0]-a[0]),rot=-Math.PI/2-ang,len=0;for(var i=0;i<L.length-1;i++)len+=Math.hypot(L[i+1][0]-L[i][0],L[i+1][1]-L[i][1]);
-  var s=(H*0.74)/Math.max(len,60),cx=(a[0]+b[0])/2,cy=(a[1]+b[1])/2;
-  function P(x,y){var dx=(x-cx)*s,dy=(y-cy)*s,co=Math.cos(rot),si=Math.sin(rot);return [W/2+dx*co-dy*si,H/2+dx*si+dy*co]}
-  c.fillStyle='#0e0f0c';c.fillRect(0,0,W,H);c.save();c.translate(W/2,H/2);c.rotate(rot);c.scale(s,s);c.translate(-cx,-cy);c.drawImage(img,0,0,D.w,D.h);c.restore();
-  function poly(pts,f,st,lw){if(!pts||!pts.length)return;c.beginPath();pts.forEach(function(p,i){var q=P(p[0],p[1]);i?c.lineTo(q[0],q[1]):c.moveTo(q[0],q[1])});c.closePath();if(f){c.fillStyle=f;c.fill()}if(st){c.strokeStyle=st;c.lineWidth=lw||1;c.stroke()}}
-  var r=String(n);D.fairways.forEach(function(f){if(f.ref==r)poly(f.poly,'rgba(190,235,120,.12)','rgba(220,255,160,.5)',1.2)});
-  D.bunkers.forEach(function(bk){poly(bk.poly,'rgba(250,236,190,.35)',null)});
-  D.greens.forEach(function(g){if(g.ref==r)poly(g.poly,'rgba(150,240,150,.2)','rgba(210,255,210,.85)',1.5)});
-  D.tees.forEach(function(t){if(t.ref==r)poly(t.poly,'rgba(228,198,81,.35)','rgba(255,240,170,.9)',1.2)});
-  c.beginPath();L.forEach(function(p,i){var q=P(p[0],p[1]);i?c.lineTo(q[0],q[1]):c.moveTo(q[0],q[1])});c.strokeStyle='rgba(255,255,255,.7)';c.lineWidth=1.6;c.setLineDash([5,7]);c.stroke();c.setLineDash([]);
-  var g=P(b[0],b[1]);c.strokeStyle='#fff';c.lineWidth=2;c.beginPath();c.moveTo(g[0],g[1]);c.lineTo(g[0],g[1]-26);c.stroke();c.fillStyle='#f7ee56';c.beginPath();c.moveTo(g[0],g[1]-26);c.lineTo(g[0]+14,g[1]-21);c.lineTo(g[0],g[1]-16);c.closePath();c.fill();
-  var t=P(a[0],a[1]);c.fillStyle='#fff';c.beginPath();c.arc(t[0],t[1],4,0,Math.PI*2);c.fill()})}
+// Hole art: a hole's real routing over the aerial, rotated so the tee sits at the bottom.
+// Used by the hole cards and by the play-the-round panel (window.HOLEART).
+function holeArt(cv,n){var T=window.COURSETOUR;if(!T||!T.ready||!T.data||!T.img)return false;
+ var D=T.data,img=T.img,h=D.holes.filter(function(x){return x.n===n})[0];if(!h)return false;
+ var W=cv.width,H=cv.height,c=cv.getContext('2d'),L=h.line,a=L[0],b=L[L.length-1];
+ var ang=Math.atan2(b[1]-a[1],b[0]-a[0]),rot=-Math.PI/2-ang,len=0;for(var i=0;i<L.length-1;i++)len+=Math.hypot(L[i+1][0]-L[i][0],L[i+1][1]-L[i][1]);
+ var s=(H*0.74)/Math.max(len,60),cx=(a[0]+b[0])/2,cy=(a[1]+b[1])/2,k=W/300;
+ function P(x,y){var dx=(x-cx)*s,dy=(y-cy)*s,co=Math.cos(rot),si=Math.sin(rot);return [W/2+dx*co-dy*si,H/2+dx*si+dy*co]}
+ c.fillStyle='#0e0f0c';c.fillRect(0,0,W,H);c.save();c.translate(W/2,H/2);c.rotate(rot);c.scale(s,s);c.translate(-cx,-cy);c.drawImage(img,0,0,D.w,D.h);c.restore();
+ function poly(pts,f,st,lw){if(!pts||!pts.length)return;c.beginPath();pts.forEach(function(p,i){var q=P(p[0],p[1]);i?c.lineTo(q[0],q[1]):c.moveTo(q[0],q[1])});c.closePath();if(f){c.fillStyle=f;c.fill()}if(st){c.strokeStyle=st;c.lineWidth=(lw||1)*k;c.stroke()}}
+ var r=String(n);D.fairways.forEach(function(f){if(f.ref==r)poly(f.poly,'rgba(190,235,120,.12)','rgba(220,255,160,.5)',1.2)});
+ D.bunkers.forEach(function(bk){poly(bk.poly,'rgba(250,236,190,.35)',null)});
+ D.greens.forEach(function(g){if(g.ref==r)poly(g.poly,'rgba(150,240,150,.2)','rgba(210,255,210,.85)',1.5)});
+ D.tees.forEach(function(t){if(t.ref==r)poly(t.poly,'rgba(228,198,81,.35)','rgba(255,240,170,.9)',1.2)});
+ c.beginPath();L.forEach(function(p,i){var q=P(p[0],p[1]);i?c.lineTo(q[0],q[1]):c.moveTo(q[0],q[1])});c.strokeStyle='rgba(255,255,255,.7)';c.lineWidth=1.6*k;c.setLineDash([5*k,7*k]);c.stroke();c.setLineDash([]);
+ var g=P(b[0],b[1]);c.strokeStyle='#fff';c.lineWidth=2*k;c.beginPath();c.moveTo(g[0],g[1]);c.lineTo(g[0],g[1]-26*k);c.stroke();c.fillStyle='#f7ee56';c.beginPath();c.moveTo(g[0],g[1]-26*k);c.lineTo(g[0]+14*k,g[1]-21*k);c.lineTo(g[0],g[1]-16*k);c.closePath();c.fill();
+ var t=P(a[0],a[1]);c.fillStyle='#fff';c.beginPath();c.arc(t[0],t[1],4*k,0,Math.PI*2);c.fill();return true}
+window.HOLEART=holeArt;
+var cards=document.querySelectorAll('#holes canvas');
+function draw(){var T=window.COURSETOUR;if(!T||!T.ready){return setTimeout(draw,120)}cards.forEach(function(cv){holeArt(cv,+cv.dataset.n)})}
 draw();
 document.querySelectorAll('#holes .h').forEach(function(bt){bt.onclick=function(){var n=+bt.dataset.hole;if(window.PLAY){window.PLAY.go(n);document.getElementById('hole').scrollIntoView({behavior:'smooth',block:'center'})}}});
 })();
@@ -763,8 +836,9 @@ if(y)s+='<text x="'+(W/2)+'" y="'+(ty+24)+'" text-anchor="middle" fill="#fff" fo
 return s+'</svg>'}
 function fmt(n){return n>0?'+'+n:n===0?'E':''+n}
 function totals(){var vs=0,pl=0;H.forEach(function(h){if(sc[h.n]&&h.par){vs+=sc[h.n]-h.par;pl++}});return pl?('Through '+pl+' hole'+(pl>1?'s':'')+': '+fmt(vs)):'Tap + to keep score'}
-function render(){var h=H[i];$('art').innerHTML=svg(h);$('hnum').textContent='Hole '+h.n+' of '+H.length;$('hpar').textContent=h.par||'–';
-var y=h.yards[tee];$('hyds').textContent=y||'–';var hk=Object.keys(h.hdcp);if(hk.length){$('hhd').hidden=false;$('hhdv').textContent=h.hdcp[hk[0]];$('hhdl').textContent=hk[0]+' hdcp'}else{$('hhd').hidden=true}
+function art(h){if(window.HOLEART){var cv=document.createElement('canvas');cv.width=600;cv.height=800;cv.setAttribute('aria-label','Hole '+h.n+' mapped from the air');if(window.HOLEART(cv,h.n)){$('art').innerHTML='';$('art').appendChild(cv);return}setTimeout(function(){if(H[i]===h)art(h)},200)}$('art').innerHTML=svg(h)}
+function render(){var h=H[i];art(h);$('hnum').textContent='Hole '+h.n+' of '+H.length;$('hpar').textContent=h.par||'–';
+var y=h.yards[tee];$('hyds').textContent=y||'–';$('hyds').parentNode.hidden=!y;var hk=Object.keys(h.hdcp);if(hk.length){$('hhd').hidden=false;$('hhdv').textContent=h.hdcp[hk[0]];$('hhdl').textContent=hk[0]+' hdcp'}else{$('hhd').hidden=true}
 if(h.photo){$('hphoto').hidden=false;$('hphoto').querySelector('img').src=h.photo}else{$('hphoto').hidden=true}
 if(h.desc){$('hdesc').hidden=false;$('hdesc').textContent=h.desc}else{$('hdesc').hidden=true}
 $('strokes').textContent=sc[h.n]||'–';$('vs').textContent=(sc[h.n]&&h.par)?('hole: '+fmt(sc[h.n]-h.par)):'';$('tot').textContent=totals();
